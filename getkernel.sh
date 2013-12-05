@@ -6,6 +6,8 @@ if [ $# -ne 2 ];then
 	exit
 fi
 
+cd $(dirname $0)
+
 DEVICE=$1
 TARGET_KERNEL_UBUNTU_SERIES=$2
 
