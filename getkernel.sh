@@ -1,8 +1,8 @@
 #!/bin/bash
 # Pull a given prebuilt Ubuntu Touch kernel into a git repositories to be used by repo manifests
 
-if [ $# -ne 2 ];then
-	echo Usage $0 DEVICE SERIES
+if [ $# -lt 2 ];then
+	echo "Usage $0 DEVICE SERIES [REPOS_DIR]"
 	exit
 fi
 
@@ -17,7 +17,6 @@ PULL_LP_BIN=./pull-lp-bin.py
 
 
 # Download and unpack the kernel binary package from Launchpad
-
 
 TARGET_OUT_UBUNTU_KERNEL=tmp-$TARGET_KERNEL_UBUNTU_META
 #rm -Rf $TARGET_OUT_UBUNTU_KERNEL
@@ -37,7 +36,7 @@ kernel_version=${kernel_image#linux-image-}
 # Place vmlinuz and the modules under a local git repo/workdir, skipping if no change has been made since last check
 
 LOCAL_REPOS_PATH=git
-PUBLIC_REPOS_PATH=/srv/phablet.ubuntu.com/git/ubuntu/kernels
+PUBLIC_REPOS_PATH=${3:-/srv/phablet.ubuntu.com/git/ubuntu/kernels}
 REPO_NAME=ubuntu_prebuilt_kernel_$DEVICE
 
 GITDIR=$LOCAL_REPOS_PATH/$REPO_NAME
