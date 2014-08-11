@@ -17,7 +17,7 @@ PULL_LP_BIN=./pull-lp-bin.py
 # Download and unpack the kernel binary package from Launchpad
 
 OUT_DIR=tmp-initrd
-
+rm -Rf $OUT_DIR
 mkdir -p $OUT_DIR
 $PULL_LP_BIN $PACKAGE_NAME -o $OUT_DIR $UBUNTU_SERIES
 dpkg-deb -x $OUT_DIR/$PACKAGE_NAME*.deb $OUT_DIR
