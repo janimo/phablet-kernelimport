@@ -1,5 +1,5 @@
 cd $(dirname $0)
-SERIES=utopic
+SERIES=vivid
 
 ./getkernel.sh goldfish $SERIES
 ./getkernel.sh mako $SERIES
